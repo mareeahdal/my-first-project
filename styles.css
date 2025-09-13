@@ -1,0 +1,450 @@
+/* Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: auto;
+  overflow-x: hidden;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+}
+
+body {
+  background-image: url("the_netflix.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center top;
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("the_netflix.jpg");
+  background-size: cover;
+  background-position: center;
+  filter: brightness(20%);
+  z-index: -1;
+}
+
+/* Navigation */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  position: relative;
+  z-index: 10;
+}
+
+.logo img {
+  width: 180px;
+  height: auto;
+  max-width: 100%;
+}
+
+nav button {
+  background: #e50914;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+nav button:hover {
+  background: #f40612;
+}
+
+/* Hero Section */
+.hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  padding: 4rem 2rem;
+  min-height: 60vh;
+  position: relative;
+  z-index: 5;
+}
+
+.hero h1 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 700;
+  margin-bottom: 1rem;
+  line-height: 1.1;
+}
+
+.hero h4 {
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+  font-weight: 400;
+  margin-bottom: 1.5rem;
+  line-height: 1.4;
+}
+
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  max-width: 600px;
+}
+
+#emailInput {
+  padding: 1rem;
+  font-size: 1rem;
+  width: 100%;
+  max-width: 400px;
+  background: rgba(0, 0, 0, 0.7);
+  border: 1px solid #333;
+  border-radius: 4px;
+  color: white;
+  outline: none;
+}
+
+#emailInput:focus {
+  border-color: #e50914;
+}
+
+#emailInput::placeholder {
+  color: #999;
+}
+
+#getStartedBtn {
+  background: #e50914;
+  color: white;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%;
+  max-width: 200px;
+}
+
+#getStartedBtn:hover {
+  background: #f40612;
+}
+
+/* Main Content */
+.main {
+  background-color: #000;
+  padding: 2rem 0;
+}
+
+.section-title {
+  color: white;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 600;
+  margin: 2rem 2rem 1rem;
+}
+
+/* Movie Grid */
+.movie-grid {
+  display: flex;
+  gap: 1rem;
+  padding: 0 2rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.movie-grid::-webkit-scrollbar {
+  display: none;
+}
+
+.movie-item {
+  position: relative;
+  flex-shrink: 0;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.movie-item:hover {
+  transform: scale(1.05);
+}
+
+.movie-item img {
+  width: 200px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.rank-overlay {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 0.5rem;
+  border-radius: 4px;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+/* Features Section */
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.feature-card {
+  background: linear-gradient(135deg, #1a1a2e, #16213e);
+  padding: 2rem;
+  border-radius: 8px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+}
+
+.feature-card h3 {
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.feature-card p {
+  color: #ccc;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* FAQ Section */
+.faq {
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.faq h3 {
+  color: white;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.faq-item {
+  background: #2d2d2d;
+  margin-bottom: 0.5rem;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.faq-summary {
+  background: #2d2d2d;
+  color: white;
+  padding: 1.5rem;
+  font-size: 1.2rem;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  width: 100%;
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.3s ease;
+}
+
+.faq-summary:hover {
+  background: #3d3d3d;
+}
+
+.faq-summary::after {
+  content: "+";
+  font-size: 1.5rem;
+  transition: transform 0.3s ease;
+}
+
+.faq-item[open] .faq-summary::after {
+  transform: rotate(45deg);
+}
+
+.faq-content {
+  background: #000;
+  color: white;
+  padding: 1.5rem;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+/* Footer CTA */
+.footer-cta {
+  background: #000;
+  padding: 3rem 2rem;
+  text-align: center;
+}
+
+.footer-cta h2 {
+  color: white;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  margin-bottom: 2rem;
+}
+
+/* Footer Links */
+.footer {
+  background: #000;
+  padding: 2rem;
+  border-top: 1px solid #333;
+}
+
+.footer h3 {
+  color: white;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.footer-links {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  color: #999;
+}
+
+.footer-links a {
+  color: #999;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: white;
+}
+
+/* Responsive Design */
+@media screen and (min-width: 768px) {
+  .signup-form {
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  #emailInput {
+    max-width: 500px;
+  }
+
+  #getStartedBtn {
+    max-width: 200px;
+  }
+
+  .movie-item img {
+    width: 250px;
+    height: 375px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  nav {
+    padding: 1rem;
+  }
+
+  .logo img {
+    width: 120px;
+  }
+
+  .hero {
+    padding: 2rem 1rem;
+    min-height: 50vh;
+  }
+
+  .movie-grid {
+    padding: 0 1rem;
+  }
+
+  .movie-item img {
+    width: 150px;
+    height: 225px;
+  }
+
+  .features {
+    grid-template-columns: 1fr;
+    padding: 1rem;
+  }
+
+  .faq {
+    padding: 1rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .logo img {
+    width: 100px;
+  }
+
+  nav button {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.9rem;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .hero h4 {
+    font-size: 1rem;
+  }
+
+  .movie-item img {
+    width: 120px;
+    height: 180px;
+  }
+
+  .feature-card {
+    padding: 1.5rem;
+  }
+
+  .faq-summary {
+    padding: 1rem;
+    font-size: 1rem;
+  }
+
+  .faq-content {
+    padding: 1rem;
+    font-size: 1rem;
+  }
+}
+
+/* Utility Classes */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.mb-2 {
+  margin-bottom: 2rem;
+}
+
+.mt-2 {
+  margin-top: 2rem;
+}

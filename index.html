@@ -1,680 +1,233 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Netflix Landing Page</title>
-    <style> 
-    html,body{
-        margin:0;
-        padding:0;
-        width:100%;
-        height:auto;
-        overflow-x:hidden;
-    }
-        body{
-            background-image: url('the_netflix.png');
-            background-repeat:no-repeat;
-            background-size: contain;
-            z-index:-1;
-            position: relative;
-          
-        }
-        body::before{
-            content: "";
-           position: absolute;
-            top:0;
-            left:0;
-            width:100%;
-            height:100%;
-             background-image: url('the_netflix.jpg');
-             filter:brightness(20%);
-               z-index:-1;
-
-        }
-        main::after{
-            content: "";
-           position: absolute;
-            bottom:-80px;
-            left:0;
-            width:100%;
-            height:100%;
-            border-top-color: pink;
-              border-top-left-radius:50% 80px;
-              border-top-right-radius:50% 80px;}
-
-        .logo img{
-            width:18em;
-            height:auto;
-            padding: 1.5em;
-            background:transparent;
-            margin-left: 8em;
-        }
-        nav{
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-        }
-        nav button{
-            margin-right: 10em;
-             padding: 1.5em;
-             margin-top: 1.5em;
-
-           
-
-        }
-        button{
-            background: rgb(204, 1, 1);
-            color:white;
-            padding:1em;
-            border-radius: 7px;
-            font-size:1em;
-            border:50%;
-        }
-        #emailInput{
-            padding:1em;
-            font-size:1.2em;
-            width:35%;
-            background: transparent;
-            border-color: rgb(120, 120, 255);
-            border-radius: 1em;
-        }
-        #getStartedBtn{
-        width:25%;
-         border-radius:1em;
-         font-size: 1.5em;
-        
-        }
-        .semi #getStartedBtn{
-            margin-bottom: 7em;
-        }
-        .semi{
-            display: flex;
-            flex-direction: column;
-            color:white;
-            justify-content: center;
-            text-align: center;
-            font-size: larger;
-        }
-            .semi h1{
-            font-size: 5em;
-              text-align: center;
-              margin-bottom: 20px;
-            }
-            
-            .main{
-              
-               padding-top:10px;
-               background-color: black;
-            }
-            .main h2{
-               margin:2em;
-            }
-            .main::before{
-                content:"";
-                top:0;
-                left:0;
-                width:100%;
-                background:linear-gradient(to right,rgb(248, 100, 125), rgb(250, 43, 43),rgb(248, 100, 125));
-                       }
-                       .picture{
-                        display: flex;
-                        flex-direction: row;
-                        gap:2em;
-                         
-                       }
-                       .pictures{
-                       position: relative;
-                       }
-                        .picture::-webkit-scrollbar{
-            height:8px;
-            display:none;
-        }
-         .picture::-webkit-scrollbar-thumb{
-            background: #888;
-             display:none;
-         }
-        .picture::-webkit-scrollbar-thumb:hover{
-                 background: #555;
-                 display:none;
-        }
-            .pictures img{
-                  width:17em;
-            height:fit-content;
-            gap:25px;
-            border-radius:1em;
-            }
-            .main h2{
-                color:white;
-                font-size:1.5em;
-            }
-            .box{
-                display:flex;
-                flex-direction: row;
-            }
-            .boxes{
-                display:flex;
-                flex-direction: column;
-                box-sizing: border-box;
-                background: linear-gradient(to bottom,rgb(1, 1, 54),rgb(70, 19, 70));
-                width:fit-content;
-                border-radius: 0.7em;
-                 padding:0.3em;
-                  margin-left: 7px;
-                  margin-bottom: 7px;
-            }
-            .boxes h3, h5{
-                color:white;
-                margin-left: 3px;
-                margin-right:3px;
-                padding:1em;
-            }
-             h3{
-                font-size: 2em;
-                margin-top:3px;
-               
-            }
-          
-            .faq h3{
-                margin: 2em;
-                color:white;
-            }
-            details{
-                 background:linear-gradient(to bottom,rgb(70, 19, 70),rgb(1, 1, 54));
-              padding:0.5em;
-              margin:2em;
-             width:70%;
-             box-sizing: border-box;
-              cursor:pointer;
-              display: flex;
-              margin:auto;
-              flex-direction: column;
-               text-align:center;
-              justify-content: center;
-
-            }
-            summary{
-            color:white;
-              font-weight:bold;
-                list-style:none;
-                justify-content: space-between;
-                 font-size:2.5em;
-                padding-left:1em;
-                gap:2em;
-            }
-            summary h3{
-                color:white;
-            }
-           
-        summary::after{
-            content:"+";
-            color:white;
-            transition:transform 0.3s ease;
-        }
-          details [open] summary::after{
-            content:"X";
-            color:white;
-        }
-       
-       details p{
-            color:white;
-             background:black;
-             font-size:1.5em;
-        }
-        ul,li{
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-         text-decoration:none;
-         color:white;
-         gap:1em;
-        }
-        ul{
-            text-decoration: underline;
-        }
-        ul h3{
-            font-size: 1em;
-            width:100%;
-        }
-        .text-overlay{
-            position:absolute;
-           bottom:0;
-            left:0;
-            color:white;
-            text-shadow: rgb(145, 143, 143);
-            gap:2em;
-            padding:5px 10px;
-            border-radius:5px;
-            font-size:2.5em;
-            z-index: index-1;
-        }
-        @media screen and (max-width:768px) {
-            .logo img{
-            width:30%;
-            float:left;
-            margin-left: 2.5em;
-            margin-top:1em;
-            padding:0;
-           }
-            nav button{
-            margin-right: 7em;
-             padding: 0.5em;
-             width:70%;
-        }
-        .semi h1{
-            font-size: 3em;
-             margin-left:1em;
-            margin-right: 1em;
-        }
-        .semi h4{
-            font-size: 1em;
-            margin-left:1em;
-            margin-right: 1em;
-        }
-         #emailInput{
-            padding:1em;
-            font-size:1em;
-            width:70%;
-            background: transparent;
-            border-color: rgb(120, 120, 255);
-            border-radius: 1em;
-            margin-bottom: 1em;
-        }
-        #getStartedBtn{
-        width:50%;
-        float:none;
-         border-radius:1em;
-         font-size: 1em;
-        }
-        .pictures img{
-          width:13em;
-        }
-        .picture{
-         width:100%;
-          gap:1em;
-          overflow-x: auto;
-        }
-        .picture::-webkit-scrollbar{
-            height:8px;
-            display:none;
-        }
-         .picture::-webkit-scrollbar-thumb{
-            background: #888;
-             display:none;
-         }
-        .picture::-webkit-scrollbar-thumb:hover{
-                 background: #555;
-                 display:none;
-        }
-        .boxes{
-          width:80%;
-          float:none;
-        }
-        .box{
-            display:flex;
-            flex-direction: column;
-            justify-content:center;
-            margin-left:5em;
-
-        }
-        .boxes h3{
-        font-size:1em;
-    }
-         details{
-              padding:0.5em;
-              margin-left:2em;
-              width:70%;
-             box-sizing: border-box;
-              cursor:pointer;
-              display: flex;
-              flex-direction: column;
-              justify-content: center;
-
-            }
-            summary{
-               
-              color:white;
-                list-style:none;
-                justify-content: space-between;
-                 font-size:1em;
-            }
-            .faq{
-                justify-content:center;
-            }
-             .faq h3{
-                font-size:1.5em;
-                margin-top: 2px;
-                color:white;
-                padding:1em;
-             }
-             .faq p{
-                color:white;
-             }
-            .semis{
-                margin-left: 2em;
-            }
-             .semi button{
-        width:50%;
-        float:none;
-         border-radius:1em;
-         font-size: 1em;
-        }
-              ul,li{
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-         text-decoration:none;
-         color:white;
-         gap:0.2em;
-        }
-        ul{
-            text-decoration: underline;
-        }
-     ul h3{
-            font-size: 1.2em;
-            width:100%;
-            grid-column:1/span 3 ;
-        }
-    }
-        @media screen and(max-width:480px){
-                .logo img{
-            width:10em;
-            float:left;
-            margin-left: 2.5em;
-            margin-top:1em;
-            padding:0;
-           }
-         
-            nav button{
-            margin-right: 5em;
-            padding:0.2em;
-             width:2em;
-        }
-        .semi h1{
-            font-size: 2em;
-             margin-left:1em;
-            margin-right: 1em;
-        }
-        .semi h4{
-            font-size: 1em;
-            margin-left:1em;
-            margin-right: 1em;
-        }
-         #emailInput{
-            padding:1em;
-            font-size:1em;
-            width:70%;
-            background: transparent;
-            border-color: rgb(120, 120, 255);
-            border-radius: 0.5em;
-            margin-bottom: 1em;
-        }
-        #getStartedBtn{
-        width:50%;
-        float:none;
-         border-radius:0.5em;
-         font-size: 0.7em;
-        }
-        .picture img{
-         object-fit:fill;
-        }
-        .picture{
-         width:100%;
-          gap:1em;
-          overflow-x: auto;
-        }
-        .picture::-webkit-scrollbar{
-            height:8px;
-            display:none;
-        }
-         .picture::-webkit-scrollbar-thumb{
-            background: #888;
-             display:none;
-         }
-        .picture::-webkit-scrollbar-thumb:hover{
-                 background: #555;
-                 display:none;
-        }
-        .boxes{
-          width:80%;
-          float:none;
-        }
-        .box{
-            display:flex;
-            flex-direction: column;
-            justify-content:center;
-            margin-left:5em;
-
-        }
-        .boxes h3{
-        font-size:1em;
-    }
-         details{
-              padding:0.5em;
-              margin-left:2em;
-              width:70%;
-             box-sizing: border-box;
-              cursor:pointer;
-              display: flex;
-              flex-direction: column;
-             
-              justify-content: center;
-
-            }
-            summary{
-                background-color:rgb(34, 34, 34);
-             
-                list-style:none;
-                justify-content: space-between;
-                 font-size:1em;
-            }
-             .faq h3{
-                font-size:1.5em;
-                margin-top: 2px;
-                color:white;
-                padding:1em;
-             }
-            .semis{
-                margin-left: 2em;
-            }
-             .semi button{
-        width:50%;
-        float:none;
-         border-radius:1em;
-         font-size: 1em;
-        } 
-           li{
-            font-size:1em;
-           }
-           
-              ul,li{
-            display:flex;
-            flex-direction:column;
-         text-decoration:none;
-         color:white;
-         gap:0.2em;
-        }
-        ul{
-            text-decoration: underline;
-        }
-     ul h3{
-            font-size: 1.2em;
-            width:100%;
-          
-      } }
-    
-        
-
-
-        </style>
-</head>
-<body>
-    <div>
-    <div>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Navigation -->
     <nav>
-        <div class="logo">
-            <img src="BrandAssets_Logos_01-Wordmark.jpg">
-        </div>
-    <div>
-    <button type="submit">Sign In </button>
-    </div>
-    
-
+      <div class="logo">
+        <img src="BrandAssets_Logos_01-Wordmark.jpg" alt="Netflix" />
+      </div>
+      <button type="button">Sign In</button>
     </nav>
-</div>
-<div class="semi">
-<h1>Unlimited movies, TV shows, and more</h1>
-<h4>Starts at &#8358 2,500. Cancel anytime.</h4>
-<h4> Ready to watch? Enter your email to create or restart your membership</h4>
-<div class="semis">
-<input type="email" id="emailInput" name="email" placeholder="Email address">
-<button type="submit" id="getStartedBtn">Get Started > </button>
-</div>
-</div>
-</div>
 
-<!--section2-->
-<div class="main">
-    <h2>Trending Now</h2>
-    <div class="picture">
-        <div class="pictures">
-            <img src="A_monkey.jpg">
-            <div class="text-overlay"><h1>1</h1></div>
-        </div>
-        <div class="pictures">
-            <img src="Mother.jpg">
-            <div class="text-overlay">
-                <h1>2</h1>
-            </div>
-        </div>
-    <div class="pictures">
-        <img src="The-Woman-King.png">
-          <div class="text-overlay"><h1>3</h1></div>
-    </div>
-    <div class="pictures">
-        <img src="Kraven.jpg">
-        <div class="text-overlay">
-            <h1>4</h1>
-        </div>
-    </div>
-    <div class="pictures">
-        <img src="mea.jpg">
-        <div class="text-overlay">
-            <h1>5</h1>
-        </div>
-    </div>
-    <div class="pictures">
-        <img src="horror.jpg">
-        <div class="text-overlay">
-            <h1>6</h1>
-        </div>
-    </div>
-    </div>
-    <h2>More Reasons to Join</h2>
-    <!--Section 3-->
-    <div class="box">
-        <div class="boxes">
-            <h3>Enjoy on your TV<br><br>
-           <span style="font-size:0.7em;"> Watch on Smart TVs, Playstation, Xbox,<br>Chromecast,
-            Apple TV, Blu-ray players,
-            <br> and more.</span> </h3>
-        </div>
-        <div class="boxes">
-            <h3>Download your shows to watch<br>offline<br><br>
-                <span style="font-size:0.7em;"> Save your favorites easily and always<br>
-                    have something to watch.</span>
-            </h3>
-        </div>
-        <div class="boxes">
-            <h3>Watch everywhere<br><br>
-                <span style="font-size:0.7em;">Stream unlimited movies<br>
-                    and TV shows on your phone, tablet, laptop, and TV.</span>
-            </h3>
-        </div>
-        <div class="boxes">
-            <h3>Create profiles for kids<br><br>
-                <span style="font-size:0.7em;">Send kids on adventures with their<br>
-                    favorite characters in a space made<br> just for them--free with your<br>membership..</span>
-            </h3>
-        </div>
-        </div>
+    <!-- Hero Section -->
+    <section class="hero">
+      <h1>Unlimited movies, TV shows, and more</h1>
+      <h4>Starts at &#8358; 2,500. Cancel anytime.</h4>
+      <h4>
+        Ready to watch? Enter your email to create or restart your membership
+      </h4>
+      <form class="signup-form">
+        <input
+          type="email"
+          id="emailInput"
+          name="email"
+          placeholder="Email address"
+          required
+        />
+        <button type="submit" id="getStartedBtn">Get Started ></button>
+      </form>
+    </section>
 
-        <!--scetion 4-->
-         <div class="faq">
-    <h3>Frequently Asked Questions</h3>
-<details>
-    <summary>What is Netflix?</summary>
-    <p>Netflix is a streaming service that ofers a wide variety of award-winning TV shows, movies, anime,
-        documentaries, and more on thousands of internet-connected devices.<br><br>
-        you can watch as much as you want, whenever you want without a single commercial-
-        all for one low monthly price. There's always something new to discover and new TV shows and
-        movies are added every week!
-    </p>
-</details>
-<details>
-    <summary>How much does Netflix cost?</summary>
-    <p>Watch Netflix on your smartphone, tablet, Smart TV, laptop, or streaming device, all for one fixed
-        monthly fee. Plans range from &#8358 2,500 to &#8358 8,500 a month. No extra costs, no contracts.
-    </p>
-</details>
-<details>
-    <summary>Where can I watch?</summary>
-    <p>Watch anywhere, anytime. Sign in with your Netflix account to watch instantly on the web at netflix.com
-        from your personal computer or any nteret-connected device that offers the Netflix app, including
-        smart TVs, smartphones, tablets, streaming media players and game consoles<br><br>
-        You can also download your favorite shows with the iOS or Android app. Use downloads to watch while you're
-        on the go and wihtout an internet connection. Take Netflix with ou anywhere.
-    </p>
-</details>
-<details>
-    <summary>How do I cancel?</summary>
-    <p>Netflix is flexible. Thereare no pesky contracts and no commitments. You can easily cancel your account online
-        in two clicks. There are no cancellation fees - start or stop your account anytime.
-    </p>
-</details>
-<details>
-    <summary>What can I watch on Netflix?</summary>
-    <p>Netflix has an extensive library of feature films, documentaries, TV shows, anime, award-winning netflix
-        originals, and more. Watch as much as you want, anytime you want.
-    </p>
-</details>
-<details>
-    <summary>Is Netflix good for kids?</summary>
-    <p>The Netflix Kids experience is included in your membership to give parents control while kids enjoy 
-        family-friendly TV shows and movies in their own space.<br><br>
-        Kids profile come with PIN-protected parental controls that let you restrict the maturity
-        rating of content kids can watch and block specific titles you don't want kids to see.
-    </p>
-</details>
-</div>
+    <!-- Main Content -->
+    <main class="main">
+      <h2 class="section-title">Trending Now</h2>
+      <div class="movie-grid">
+        <div class="movie-item">
+          <img src="A_monkey.jpg" alt="A Monkey" />
+          <div class="rank-overlay">1</div>
+        </div>
+        <div class="movie-item">
+          <img src="Mother.jpg" alt="Mother" />
+          <div class="rank-overlay">2</div>
+        </div>
+        <div class="movie-item">
+          <img src="The-Woman-King.png" alt="The Woman King" />
+          <div class="rank-overlay">3</div>
+        </div>
+        <div class="movie-item">
+          <img src="Kraven.jpg" alt="Kraven" />
+          <div class="rank-overlay">4</div>
+        </div>
+        <div class="movie-item">
+          <img src="Mea.jpg" alt="Mea" />
+          <div class="rank-overlay">5</div>
+        </div>
+        <div class="movie-item">
+          <img src="Horror.jpg" alt="Horror" />
+          <div class="rank-overlay">6</div>
+        </div>
+      </div>
+      <!-- Features Section -->
+      <h2 class="section-title">More Reasons to Join</h2>
+      <section class="features">
+        <div class="feature-card">
+          <h3>Enjoy on your TV</h3>
+          <p>
+            Watch on Smart TVs, Playstation, Xbox, Chromecast, Apple TV, Blu-ray
+            players, and more.
+          </p>
+        </div>
+        <div class="feature-card">
+          <h3>Download your shows to watch offline</h3>
+          <p>Save your favorites easily and always have something to watch.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Watch everywhere</h3>
+          <p>
+            Stream unlimited movies and TV shows on your phone, tablet, laptop,
+            and TV.
+          </p>
+        </div>
+        <div class="feature-card">
+          <h3>Create profiles for kids</h3>
+          <p>
+            Send kids on adventures with their favorite characters in a space
+            made just for them—free with your membership.
+          </p>
+        </div>
+      </section>
+    </main>
 
-<!--section 5-->
-<div>
-    <h2>
+    <!-- FAQ Section -->
+    <section class="faq">
+      <h3>Frequently Asked Questions</h3>
+      <div class="faq-item">
+        <details>
+          <summary class="faq-summary">What is Netflix?</summary>
+          <div class="faq-content">
+            <p>
+              Netflix is a streaming service that offers a wide variety of
+              award-winning TV shows, movies, anime, documentaries, and more on
+              thousands of internet-connected devices.
+            </p>
+            <p>
+              You can watch as much as you want, whenever you want without a
+              single commercial—all for one low monthly price. There's always
+              something new to discover and new TV shows and movies are added
+              every week!
+            </p>
+          </div>
+        </details>
+      </div>
+      <div class="faq-item">
+        <details>
+          <summary class="faq-summary">How much does Netflix cost?</summary>
+          <div class="faq-content">
+            <p>
+              Watch Netflix on your smartphone, tablet, Smart TV, laptop, or
+              streaming device, all for one fixed monthly fee. Plans range from
+              &#8358; 2,500 to &#8358; 8,500 a month. No extra costs, no
+              contracts.
+            </p>
+          </div>
+        </details>
+      </div>
+      <div class="faq-item">
+        <details>
+          <summary class="faq-summary">Where can I watch?</summary>
+          <div class="faq-content">
+            <p>
+              Watch anywhere, anytime. Sign in with your Netflix account to
+              watch instantly on the web at netflix.com from your personal
+              computer or any internet-connected device that offers the Netflix
+              app, including smart TVs, smartphones, tablets, streaming media
+              players and game consoles.
+            </p>
+            <p>
+              You can also download your favorite shows with the iOS or Android
+              app. Use downloads to watch while you're on the go and without an
+              internet connection. Take Netflix with you anywhere.
+            </p>
+          </div>
+        </details>
+      </div>
+      <div class="faq-item">
+        <details>
+          <summary class="faq-summary">How do I cancel?</summary>
+          <div class="faq-content">
+            <p>
+              Netflix is flexible. There are no pesky contracts and no
+              commitments. You can easily cancel your account online in two
+              clicks. There are no cancellation fees—start or stop your account
+              anytime.
+            </p>
+          </div>
+        </details>
+      </div>
+      <div class="faq-item">
+        <details>
+          <summary class="faq-summary">What can I watch on Netflix?</summary>
+          <div class="faq-content">
+            <p>
+              Netflix has an extensive library of feature films, documentaries,
+              TV shows, anime, award-winning Netflix originals, and more. Watch
+              as much as you want, anytime you want.
+            </p>
+          </div>
+        </details>
+      </div>
+      <div class="faq-item">
+        <details>
+          <summary class="faq-summary">Is Netflix good for kids?</summary>
+          <div class="faq-content">
+            <p>
+              The Netflix Kids experience is included in your membership to give
+              parents control while kids enjoy family-friendly TV shows and
+              movies in their own space.
+            </p>
+            <p>
+              Kids profiles come with PIN-protected parental controls that let
+              you restrict the maturity rating of content kids can watch and
+              block specific titles you don't want kids to see.
+            </p>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- Footer CTA -->
+    <section class="footer-cta">
+      <h2>
         Ready to watch? Enter your email to create or restart your membership.
-    </h2>
-    <div class="semis">
-        <input type="email" id="emailInput" name="email" placeholder="Email address">
-        <button type="submit" id="getStartedBtn">Get Started > </button>
-    </div>
-    <ul>
-        <h3>Questions? Contact us.</h3><br>
-       
-        <li>FAQ</li><br>
-        <li>Help Center</li><br>
-        <li>Account</li><br>
-        <li>Media Center</li><br>
-        <li>Investor Relations</li><br>
-        <li>Jobs</li><br>
-        <li>Ways to Watch</li><br>
-        <li>Terms of Use</li><br>
-        <li>Privacy</li><br>
-        <li>Cookie Preferences</li><br>
-        <li>Corporate Information</li><br>
-        <li>Contact Us</li><br>
-        <li>Speed Test</li><br>
-        <li>Legal Notices</li><br>
-        <li>Only on Netflix</li><br>
-       
-    </ul>
-</div>
-</body>
+      </h2>
+      <form class="signup-form">
+        <input
+          type="email"
+          id="emailInput2"
+          name="email"
+          placeholder="Email address"
+          required
+        />
+        <button type="submit" id="getStartedBtn2">Get Started ></button>
+      </form>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <h3>Questions? Contact us.</h3>
+      <div class="footer-links">
+        <a href="#">FAQ</a>
+        <a href="#">Help Center</a>
+        <a href="#">Account</a>
+        <a href="#">Media Center</a>
+        <a href="#">Investor Relations</a>
+        <a href="#">Jobs</a>
+        <a href="#">Ways to Watch</a>
+        <a href="#">Terms of Use</a>
+        <a href="#">Privacy</a>
+        <a href="#">Cookie Preferences</a>
+        <a href="#">Corporate Information</a>
+        <a href="#">Contact Us</a>
+        <a href="#">Speed Test</a>
+        <a href="#">Legal Notices</a>
+        <a href="#">Only on Netflix</a>
+      </div>
+    </footer>
+  </body>
 </html>
